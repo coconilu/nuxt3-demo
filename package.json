@@ -9,6 +9,7 @@
     "generate": "nuxi generate",
     "postinstall": "nuxi prepare",
     "start": "node .output/server/index.mjs",
+    "start2": "pm2 start .output/server/index.mjs --name 'server1'",
     "start:generate": "npx serve .output/public",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit"
