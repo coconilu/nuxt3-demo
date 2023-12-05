@@ -50,6 +50,9 @@ jobs:
           script: |
             cd /home/ec2-user/cache
             rm -rf *
+            cd /home/ec2-user/server1
+            rm -rf *
+            pm2 delete "server1"
 
       - name: Copy to EC2
         uses: appleboy/scp-action@master
@@ -67,6 +70,5 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ec2-user/cache
-            tar -xzvf output.tar.gz -C /home/ec2-user/server1
-            node .output/server/index.mjs
+            tar -xzvf /home/ec2-user/cache/output.tar.gz -C /home/ec2-user/server1
+            pm2 start /home/ec2-user/server1/.output/server/index.mjs --name "server1"
