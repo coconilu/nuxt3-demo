@@ -27,7 +27,7 @@ function go() {
         :disabled="!name"
         @click="go"
       >
-        GO
+        GO!
       </button>
     </div>
   </div>
