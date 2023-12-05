@@ -48,11 +48,11 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            pm2 delete "server1"
             cd /home/ec2-user/cache
             rm -rf *
             cd /home/ec2-user/server1
             rm -rf *
-            pm2 delete "server1"
 
       - name: Copy to EC2
         uses: appleboy/scp-action@master
